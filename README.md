@@ -44,7 +44,7 @@
 * <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="20" height="20"/> **Python** &nbsp;—&nbsp; Multi-paradigm scripting, automation, and statistical algorithms
 * <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="NodeJS" width="20" height="20"/> **Node.js** &nbsp;—&nbsp; Scalable backend JavaScript execution runtime
 * <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="Express" width="20" height="20"/> **Express.js** &nbsp;—&nbsp; RESTful API server routing framework
-* <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="Flask" width="20" height="20"/> **Flask** &nbsp;—&nbsp; Lightweight Python micro-web backend APIs
+* <img src="https://img.shields.io/badge/FLASK-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" width="20" height="20"/> **Flask** &nbsp;—&nbsp; Lightweight Python micro-web backend APIs
 
 #### 📊 Data Science, Analytics &amp; Machine Learning
 * <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/pandas/pandas-original.svg" alt="Pandas" width="20" height="20"/> **Pandas** &nbsp;—&nbsp; High-performance data manipulation structures
