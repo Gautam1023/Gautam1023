@@ -1,0 +1,344 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%" height="300" style="background: #080b11; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811" />
+      <stop offset="50%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#1a0f2e" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradients -->
+    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <linearGradient id="chart-glow" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="purple-glow" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.25" />
+    </linearGradient>
+
+    <!-- Clip Paths for Typewriter Reveal -->
+    <clipPath id="clip-text-1">
+      <rect id="clip-rect-1" x="25" y="0" width="0" height="30" />
+    </clipPath>
+    <clipPath id="clip-text-2">
+      <rect id="clip-rect-2" x="25" y="0" width="0" height="30" />
+    </clipPath>
+    <clipPath id="clip-text-3">
+      <rect id="clip-rect-3" x="25" y="0" width="0" height="30" />
+    </clipPath>
+
+    <!-- Filters for Glow Effects -->
+    <filter id="glow-heavy" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur1" />
+      <feGaussianBlur stdDeviation="3" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="glow-subtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    /* CSS Keyframe Animations */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1.5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.4)); }
+      50% { filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.8)); }
+    }
+
+    @keyframes draw-path-infinite {
+      0% { stroke-dashoffset: 600; }
+      45% { stroke-dashoffset: 0; }
+      55% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 600; }
+    }
+
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes slide-in {
+      from { transform: translateY(15px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Typewriter Reveal Animations */
+    @keyframes type-clip-1 {
+      0% { width: 0px; }
+      12%, 28% { width: 240px; }
+      32%, 100% { width: 0px; }
+    }
+    @keyframes type-clip-2 {
+      0%, 33% { width: 0px; }
+      45%, 61% { width: 195px; }
+      65%, 100% { width: 0px; }
+    }
+    @keyframes type-clip-3 {
+      0%, 66% { width: 0px; }
+      78%, 94% { width: 165px; }
+      98%, 100% { width: 0px; }
+    }
+
+    /* Typewriter Cursor Movement */
+    @keyframes cursor-move {
+      /* Phrase 1 (width 230px) */
+      0% { transform: translateX(0px); }
+      12%, 28% { transform: translateX(230px); }
+      32% { transform: translateX(0px); }
+      
+      /* Phrase 2 (width 185px) */
+      33% { transform: translateX(0px); }
+      45%, 61% { transform: translateX(185px); }
+      65% { transform: translateX(0px); }
+      
+      /* Phrase 3 (width 150px) */
+      66% { transform: translateX(0px); }
+      78%, 94% { transform: translateX(150px); }
+      98%, 100% { transform: translateX(0px); }
+    }
+
+    /* Phrase Opacity Cycling */
+    @keyframes cycle-phrase-1 {
+      0%, 32% { opacity: 1; }
+      33%, 100% { opacity: 0; }
+    }
+    @keyframes cycle-phrase-2 {
+      0%, 32% { opacity: 0; }
+      33%, 65% { opacity: 1; }
+      66%, 100% { opacity: 0; }
+    }
+    @keyframes cycle-phrase-3 {
+      0%, 65% { opacity: 0; }
+      66%, 98% { opacity: 1; }
+      99%, 100% { opacity: 0; }
+    }
+
+    /* Animation Classes */
+    .animated-float-slow {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animated-float-fast {
+      animation: float 4s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .pulse-node {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .pulse-glow-effect {
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .text-title {
+      font-size: 36px;
+      font-weight: 800;
+      fill: url(#text-gradient);
+      animation: slide-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .text-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      fill: #94a3b8;
+      letter-spacing: 0.5px;
+      animation: slide-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .terminal-dot {
+      transition: transform 0.2s ease;
+    }
+    .terminal-dot:hover {
+      transform: scale(1.3);
+    }
+
+    .grid-line {
+      stroke: #1e293b;
+      stroke-width: 0.5;
+      stroke-dasharray: 4 4;
+    }
+
+    /* Linking animated clip-rects */
+    #clip-rect-1 { animation: type-clip-1 12s steps(30) infinite; }
+    #clip-rect-2 { animation: type-clip-2 12s steps(24) infinite; }
+    #clip-rect-3 { animation: type-clip-3 12s steps(20) infinite; }
+
+    .cycle-text-1 { animation: cycle-phrase-1 12s infinite; }
+    .cycle-text-2 { animation: cycle-phrase-2 12s infinite; }
+    .cycle-text-3 { animation: cycle-phrase-3 12s infinite; }
+    .cursor-element { animation: cursor-move 12s infinite, cursor-blink 0.8s step-end infinite; }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="800" height="300" fill="url(#bg-gradient)" />
+
+  <!-- Animated Tech Grid Background -->
+  <g opacity="0.45">
+    <line class="grid-line" x1="50" y1="0" x2="50" y2="300" />
+    <line class="grid-line" x1="150" y1="0" x2="150" y2="300" />
+    <line class="grid-line" x1="250" y1="0" x2="250" y2="300" />
+    <line class="grid-line" x1="350" y1="0" x2="350" y2="300" />
+    <line class="grid-line" x1="450" y1="0" x2="450" y2="300" />
+    <line class="grid-line" x1="550" y1="0" x2="550" y2="300" />
+    <line class="grid-line" x1="650" y1="0" x2="650" y2="300" />
+    <line class="grid-line" x1="750" y1="0" x2="750" y2="300" />
+    
+    <line class="grid-line" x1="0" y1="50" x2="800" y2="50" />
+    <line class="grid-line" x1="0" y1="150" x2="800" y2="150" />
+    <line class="grid-line" x1="0" y1="250" x2="800" y2="250" />
+  </g>
+
+  <!-- Data Flow Visualization (Right Side) -->
+  <g transform="translate(430, 20)" class="animated-float-slow">
+    <!-- Area Chart Glowing Backgrounds -->
+    <path d="M 50 200 L 100 130 L 150 160 L 200 90 L 250 120 L 300 60 L 300 240 L 50 240 Z" fill="url(#chart-glow)" />
+    <path d="M 50 210 L 100 160 L 150 180 L 200 130 L 250 150 L 300 100 L 300 240 L 50 240 Z" fill="url(#purple-glow)" />
+
+    <!-- Chart Grid Lines -->
+    <line x1="50" y1="240" x2="310" y2="240" stroke="#334155" stroke-width="1.5" />
+    <line x1="50" y1="60" x2="50" y2="245" stroke="#334155" stroke-dasharray="2 2" />
+    <line x1="100" y1="60" x2="100" y2="245" stroke="#334155" stroke-dasharray="2 2" />
+    <line x1="150" y1="60" x2="150" y2="245" stroke="#334155" stroke-dasharray="2 2" />
+    <line x1="200" y1="60" x2="200" y2="245" stroke="#334155" stroke-dasharray="2 2" />
+    <line x1="250" y1="60" x2="250" y2="245" stroke="#334155" stroke-dasharray="2 2" />
+    <line x1="300" y1="60" x2="300" y2="245" stroke="#334155" stroke-dasharray="2 2" />
+
+    <!-- Animated Graph Lines (Looping Infinitely) -->
+    <path d="M 50 200 L 100 130 L 150 160 L 200 90 L 250 120 L 300 60" 
+          fill="none" stroke="#60a5fa" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+          class="pulse-glow-effect"
+          style="stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw-path-infinite 8s ease-in-out infinite;" />
+          
+    <path d="M 50 210 L 100 160 L 150 180 L 200 130 L 250 150 L 300 100" 
+          fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+          style="stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw-path-infinite 8s ease-in-out infinite; animation-delay: 0.5s;" />
+
+    <!-- Nodes & Pulse Glows -->
+    <circle cx="50" cy="200" r="4" fill="#60a5fa" />
+    <circle cx="100" cy="130" r="4" fill="#60a5fa" />
+    <circle cx="150" cy="160" r="4" fill="#60a5fa" />
+    <circle cx="200" cy="90" r="4" fill="#60a5fa" />
+    <circle cx="250" cy="120" r="4" fill="#60a5fa" />
+    <circle cx="300" cy="60" r="5" fill="#60a5fa" class="pulse-glow-effect" />
+    
+    <!-- Pulsing target markers -->
+    <circle cx="300" cy="60" r="12" fill="none" stroke="#3b82f6" stroke-width="1.5" class="pulse-node" />
+    <circle cx="200" cy="90" r="9" fill="none" stroke="#a78bfa" stroke-width="1" class="pulse-node" style="animation-delay: 1s;" />
+
+    <!-- Data Floating Particles -->
+    <g class="animated-float-fast">
+      <circle cx="80" cy="80" r="3" fill="#38bdf8" opacity="0.6" class="pulse-node" style="animation-delay: 0.5s;" />
+      <circle cx="270" cy="180" r="2.5" fill="#c084fc" opacity="0.5" class="pulse-node" style="animation-delay: 1.5s;" />
+      <circle cx="170" cy="50" r="2" fill="#f472b6" opacity="0.7" class="pulse-node" style="animation-delay: 0.2s;" />
+    </g>
+  </g>
+
+  <!-- Left/Center Terminal Window Frame -->
+  <g transform="translate(35, 45)">
+    <!-- Terminal Header Bar (Width 380 to fit text comfortably without overflow) -->
+    <rect width="380" height="210" rx="8" fill="#0d131f" stroke="#1e293b" stroke-width="1.5" />
+    <rect width="380" height="30" rx="8" fill="#131b2e" />
+    <rect y="20" width="380" height="10" fill="#131b2e" />
+    <line x1="0" y1="30" x2="380" y2="30" stroke="#1e293b" stroke-width="1" />
+
+    <!-- Mac-style Window Controls -->
+    <circle class="terminal-dot" cx="20" cy="15" r="5" fill="#ef4444" />
+    <circle class="terminal-dot" cx="35" cy="15" r="5" fill="#f59e0b" />
+    <circle class="terminal-dot" cx="50" cy="15" r="5" fill="#10b981" />
+    <text x="190" y="20" font-size="11" fill="#475569" font-weight="600" text-anchor="middle" letter-spacing="0.5">developer-profile.terminal</text>
+
+    <!-- Terminal Content -->
+    <g transform="translate(25, 45)">
+      <!-- Line Numbers -->
+      <text x="-5" y="32" font-size="12" fill="#334155" text-anchor="end" font-family="monospace">1</text>
+      <text x="-5" y="62" font-size="12" fill="#334155" text-anchor="end" font-family="monospace">2</text>
+      <text x="-5" y="92" font-size="12" fill="#334155" text-anchor="end" font-family="monospace">3</text>
+      <text x="-5" y="122" font-size="12" fill="#334155" text-anchor="end" font-family="monospace">4</text>
+
+      <!-- Welcome Badge -->
+      <g transform="translate(15, 12)">
+        <rect width="115" height="20" rx="4" fill="#1e293b" />
+        <text x="8" y="14" font-size="10" fill="#38bdf8" font-weight="700" letter-spacing="0.5">FULL STACK DEVELOPER</text>
+      </g>
+      
+      <!-- Greeting and Name -->
+      <text x="15" y="55" class="text-title">Gautam Sikka</text>
+
+      <!-- Subtitles & Roles -->
+      <text x="15" y="86" class="text-subtitle">A Full Stack Developer &amp; Data Analyst</text>
+
+      <!-- Tech Badges inside terminal -->
+      <g transform="translate(15, 110)">
+        <g transform="translate(0, 0)">
+          <rect width="65" height="22" rx="4" fill="#152642" stroke="#3b82f6" stroke-width="0.75" />
+          <text x="32.5" y="15" font-size="11" fill="#60a5fa" font-weight="600" text-anchor="middle">ReactJS</text>
+        </g>
+        <g transform="translate(75, 0)">
+          <rect width="65" height="22" rx="4" fill="#20293a" stroke="#fbbf24" stroke-width="0.75" />
+          <text x="32.5" y="15" font-size="11" fill="#facc15" font-weight="600" text-anchor="middle">Python</text>
+        </g>
+        <g transform="translate(150, 0)">
+          <rect width="75" height="22" rx="4" fill="#132a22" stroke="#10b981" stroke-width="0.75" />
+          <text x="37.5" y="15" font-size="11" fill="#34d399" font-weight="600" text-anchor="middle">MongoDB</text>
+        </g>
+        <g transform="translate(235, 0)">
+          <rect width="70" height="22" rx="4" fill="#252416" stroke="#f59e0b" stroke-width="0.75" />
+          <text x="35" y="15" font-size="11" fill="#fbbf24" font-weight="600" text-anchor="middle">Power BI</text>
+        </g>
+      </g>
+
+      <!-- Fully Synchronized Looping Typewriter Terminal Prompt -->
+      <g transform="translate(15, 142)">
+        <text x="0" y="15" font-size="13" fill="#a78bfa" font-weight="700" font-family="monospace">&gt;_</text>
+        
+        <!-- Phrase 1: building scalable intelligence -->
+        <g clip-path="url(#clip-text-1)" class="cycle-text-1">
+          <text x="25" y="15" font-size="13" fill="#38bdf8" font-weight="500" font-family="monospace">building scalable intelligence</text>
+        </g>
+        <!-- Phrase 2: deploying fullstack apps -->
+        <g clip-path="url(#clip-text-2)" class="cycle-text-2">
+          <text x="25" y="15" font-size="13" fill="#10b981" font-weight="500" font-family="monospace">deploying fullstack apps</text>
+        </g>
+        <!-- Phrase 3: mining data insights -->
+        <g clip-path="url(#clip-text-3)" class="cycle-text-3">
+          <text x="25" y="15" font-size="13" fill="#f59e0b" font-weight="500" font-family="monospace">mining data insights</text>
+        </g>
+
+        <!-- Blinking Typewriter Cursor -->
+        <rect class="cursor-element" x="25" y="3" width="8" height="13" fill="#38bdf8" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Outer Neon Glow Accents around frame -->
+  <circle cx="800" cy="150" r="120" fill="#8b5cf6" opacity="0.06" filter="url(#glow-heavy)" />
+  <circle cx="0" cy="150" r="100" fill="#3b82f6" opacity="0.04" filter="url(#glow-heavy)" />
+</svg>
