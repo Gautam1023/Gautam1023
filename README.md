@@ -62,15 +62,10 @@
 * <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" width="20" height="20"/> **Amazon Web Services (AWS)** &nbsp;—&nbsp; Enterprise cloud virtualization hosting &amp; scaling
 * <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="Docker" width="20" height="20"/> **Docker** &nbsp;—&nbsp; Application container virtualization environment
 
----
 
-### 📈 GitHub Contribution Activity
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=gautam1023&amp;theme=tokyonight" alt="Gautam's Contribution Graph" width="800" />
-</p>
 
----
+
 
 ### 📊 Data Pipeline &amp; Analytics Monitor
 
